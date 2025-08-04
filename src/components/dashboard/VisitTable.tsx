@@ -98,7 +98,14 @@ const VisitsTable: React.FC<VisitsTableProps> = ({ visits: initialVisits }) => {
               paginatedVisits.map((visit) => (
                 <tr key={visit.id} className="hover:bg-gray-50 transition-colors">
                   <td className="px-4 py-3 text-sm text-gray-900 whitespace-nowrap">
-                    {new Date(visit.date).toLocaleDateString('es-CL')}
+                    {(() => {
+                      const date = new Date(visit.date);
+                      // Usar UTC para evitar problemas de zona horaria
+                      const day = String(date.getUTCDate()).padStart(2, '0');
+                      const month = String(date.getUTCMonth() + 1).padStart(2, '0');
+                      const year = date.getUTCFullYear();
+                      return `${day}/${month}/${year}`;
+                    })()}
                   </td>
                   <td className="px-4 py-3 text-sm text-gray-900 whitespace-nowrap">{visit.visitor_name}</td>
                   <td className="px-4 py-3">
