@@ -34,7 +34,7 @@ const ImprovementAction: React.FC<ImprovementActionProps> = ({ suggestions, prop
     try {
       const fullUrl = import.meta.env.DEV 
         ? endpoint 
-        : `https://woperty.com${endpoint}`;
+        : `https://woperty.com/api${endpoint}`;
       await fetch(fullUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
