@@ -21,9 +21,9 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const baseUrl = import.meta.env.DEV ? '/api' : 'https://woperty.com/api';
+        const baseUrl = import.meta.env.DEV ? '/api' : 'https://woperty.com';
         const response = await axios.get<DashboardData>(
-          `${baseUrl}/external_dashboard/index/${uuid}`,
+          `${baseUrl}/api/external_dashboard/index/${uuid}`,
           { headers: { 'Accept': 'application/json', 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' } }
         );
         console.log('Fetched data:', response.data);
