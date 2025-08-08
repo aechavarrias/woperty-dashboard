@@ -32,8 +32,10 @@ const ImprovementAction: React.FC<ImprovementActionProps> = ({ suggestions, prop
 
     console.log("Enviando acción:", { endpoint, body });
     try {
-      const baseUrl = import.meta.env.DEV ? '' : 'https://woperty.com';
-      await fetch(`${baseUrl}${endpoint}`, {
+      const fullUrl = import.meta.env.DEV 
+        ? endpoint 
+        : `https://woperty.com${endpoint}`;
+      await fetch(fullUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
